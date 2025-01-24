@@ -3,7 +3,6 @@ using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.Events;
 
-// [RequireComponent(typeof(AudioSource))]
 public class MicrophoneInput : MonoBehaviour
 {
     [SerializeField]
@@ -98,13 +97,4 @@ public class MicrophoneInput : MonoBehaviour
 
         return volume / numberOfSamples;
     }
-    
-// #if UNITY_EDITOR
-//     [UnityEditor.MenuItem("CONTEXT/MicrophoneInput/Stop Microphone")]
-//     private static void StartMicrophoneFromMenuItem()
-//     {
-//         StartCapturing();
-//     }
-// #endif
-    
 }
