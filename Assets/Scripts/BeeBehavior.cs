@@ -98,7 +98,6 @@ public class BeeBehavior : MonoBehaviour
     private void StingTarget(Transform target)
     {
         // Perform the stinging action (e.g., animation, damage, etc.)
-        Debug.Log("Stung the target!");
         Destroy(target.gameObject);
 
     }
