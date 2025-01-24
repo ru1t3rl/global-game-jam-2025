@@ -2,6 +2,7 @@ using Meta.WitAi.Lib;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class MicrophoneInput : MonoBehaviour
 {
@@ -13,9 +14,10 @@ public class MicrophoneInput : MonoBehaviour
     private float[] _samples;
 
     [SerializeField]
-    private float multiplier = 10.0f;
+    private float volumeMultiplier = 10.0f;
+    
     [SerializeField, Tooltip("The threshold won't be multiplied!")]
-    private float threshold = 1;
+    private float volumeThreshold = 1;
 
     private string _deviceName;
     private AudioClip _audioClip;
@@ -77,9 +79,12 @@ public class MicrophoneInput : MonoBehaviour
             return;
         }
 
-        float volume = GetMicrophoneVolume(_deviceName);
-        Debug.Log($"Volume: {volume}");
-        onTickUpdate?.Invoke(volume);
+        float volume = GetMicrophoneVolume(_deviceName) * volumeMultiplier;
+
+        if (volume >= volumeThreshold)
+        {
+            onTickUpdate?.Invoke(volume);
+        }
     }
 
     private float GetMicrophoneVolume(string microphoneName)
