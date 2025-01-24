@@ -11,20 +11,25 @@ public class MicrophoneInput : MonoBehaviour
 
     [SerializeField, Tooltip("Must be a power of 2")]
     private int numberOfSamples = 64;
-    private float[] samples;
+    private float[] _samples;
 
-    private string deviceName;
-    private AudioClip audioClip;
+    [SerializeField]
+    private float multiplier = 10.0f;
+    [SerializeField, Tooltip("The threshold won't be multiplied!")]
+    private float threshold = 1;
 
-    private int minFrequency;
-    private int maxFrequency;
-    private int activeFrequency;
+    private string _deviceName;
+    private AudioClip _audioClip;
 
-    public UnityEvent<int> onTickUpdate = new();
+    private int _minFrequency;
+    private int _maxFrequency;
+    private int _activeFrequency;
+
+    public UnityEvent<float> onTickUpdate = new();
     public UnityEvent onRecordingStarted = new();
     public UnityEvent onRecordingStopped = new();
 
-    private bool active = false;
+    private bool _active = false;
 
     private void Awake()
     {
@@ -36,58 +41,70 @@ public class MicrophoneInput : MonoBehaviour
             return;
         }
 
-        deviceName = deviceNames[0];
-        Microphone.GetDeviceCaps(deviceName, out minFrequency, out maxFrequency);
-        activeFrequency = Mathf.RoundToInt(minFrequency + (maxFrequency - minFrequency) / 2f);
+        _deviceName = deviceNames[0];
+        Debug.Log($"Using audio device: {_deviceName}");
+        Microphone.GetDeviceCaps(_deviceName, out _minFrequency, out _maxFrequency);
+        _activeFrequency = Mathf.RoundToInt(_minFrequency + (_maxFrequency - _minFrequency) / 2f);
 
-        // audioSource = GetComponent<AudioSource>();
-        samples = new float[numberOfSamples];
+        _samples = new float[numberOfSamples];
     }
 
+    [ContextMenu("Start Microphone")]
     public void StartCapturing()
     {
-        audioClip = Microphone.Start(
-            deviceName,
+        _audioClip = Microphone.Start(
+            _deviceName,
             true,
             maxRecordingLength,
-            activeFrequency
+            _activeFrequency
         );
 
-        active = true;
+        _active = true;
         onRecordingStarted?.Invoke();
     }
 
+    [ContextMenu("Stop Microphone")]
     public void StopCapturing()
     {
-        Microphone.End(deviceName);
-        active = false;
+        Microphone.End(_deviceName);
+        _active = false;
         onRecordingStopped?.Invoke();
     }
 
     public void Update()
     {
-        if (!active)
+        if (!_active)
         {
             return;
         }
-        
-        GetMicrophoneVolume(deviceName);
-        onTickUpdate?.Invoke(activeFrequency);
+
+        float volume = GetMicrophoneVolume(_deviceName);
+        Debug.Log($"Volume: {volume}");
+        onTickUpdate?.Invoke(volume);
     }
 
     private float GetMicrophoneVolume(string microphoneName)
     {
         int position = Microphone.GetPosition(microphoneName);
-        samples = new float[numberOfSamples];
-        
-        audioClip.GetData(samples, position - numberOfSamples);
-        
+        _samples = new float[numberOfSamples];
+
+        _audioClip.GetData(_samples, Mathf.Max(0, position - numberOfSamples));
+
         float volume = 0;
         for (int i = 0; i < numberOfSamples; i++)
         {
-            volume += Mathf.Abs(samples[i]);
+            volume += Mathf.Abs(_samples[i]);
         }
-        
+
         return volume / numberOfSamples;
     }
+    
+// #if UNITY_EDITOR
+//     [UnityEditor.MenuItem("CONTEXT/MicrophoneInput/Stop Microphone")]
+//     private static void StartMicrophoneFromMenuItem()
+//     {
+//         StartCapturing();
+//     }
+// #endif
+    
 }
