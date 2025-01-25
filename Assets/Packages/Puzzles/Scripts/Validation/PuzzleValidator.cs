@@ -1,88 +1,74 @@
 using System.Collections.Generic;
 using System.Linq;
+using BubblePuzzle.Puzzles.Configuration;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace BubblePuzzle.Puzzles.Validation
 {
+    [RequireComponent(typeof(MeshComparer))]
     public class PuzzleValidator : MonoBehaviour
     {
         [SerializeField]
-        private float positionTolerance = 0.1f;
+        private Puzzle puzzle;
+
         [SerializeField]
-        private float rotationTolerance = 0.1f;
-        [SerializeField]
-        private float sizeTolerance = 0.1f;
+        private Transform bubbleContainer;
 
         public UnityEvent<ValidationResult> OnValidationFinished;
+        
+        private MeshComparer _meshComparer;
 
-        private Puzzle _puzzle;
-
-        public ValidationResult Validate(List<Transform> bubbles)
+        private void Awake()
         {
-            if (_puzzle == null)
+            _meshComparer = GetComponent<MeshComparer>();
+        }
+        
+        public void SetPuzzle(Puzzle puzzle)
+        {
+            this.puzzle = puzzle;
+        }
+        
+        [ContextMenu("Validate")]
+        public ValidationResult Validate()
+        {
+            if (puzzle == null)
             {
                 Debug.LogError("No puzzle is set!");
-                return new ValidationResult()
+                return new ValidationResult
                 {
                     IsValid = false
                 };
             }
 
-            Vector3 center = CalculateCenter(bubbles);
-            List<NormalizedTransform> normalizedBubbles = NormalizeBubbles(bubbles, center);
+            Transform[] bubbles = GetAllBubblesFromContainer();
 
-            float matchPercentage = CalculateOverallMatchPercentage(normalizedBubbles, _puzzle.Bubbles.ToList());
+            if (bubbles.Length == 0)
+            {
+                return new ValidationResult
+                {
+                    IsValid = false
+                };
+            }
+
+            float matchPercentage = _meshComparer.ValidateShape();
             return new ValidationResult
             {
                 IsValid = matchPercentage > 0.8f,
                 MatchPercentage = matchPercentage,
-                TotalBubbles = bubbles.Count
+                TotalBubbles = bubbles.Length
             };
         }
 
-        private List<NormalizedTransform> NormalizeBubbles(List<Transform> bubbles, Vector3 center)
+        private Transform[] GetAllBubblesFromContainer()
         {
-            float maxScale = bubbles.Max(b => b.localScale.magnitude);
-            return bubbles.Select(b => new NormalizedTransform(
-                    (b.transform.position - center),
-                    b.transform.rotation,
-                    b.transform.localScale / maxScale
-                )
-            ).ToList();
-        }
-
-        private Vector3 CalculateCenter(List<Transform> bubbles)
-        {
-            return bubbles.Aggregate(
-                Vector3.zero,
-                (acc, bubble) => acc + bubble.position
-            ) / bubbles.Count;
-        }
-
-        private float CalculateOverallMatchPercentage(
-            List<NormalizedTransform> normalizedBubbles,
-            List<Transform> targetReferences)
-        {
-            int matchedBubbles = 0;
-            foreach (var bubble in normalizedBubbles)
+            Transform[] bubbles = new Transform[bubbleContainer.childCount];
+            for (int i = 0; i < bubbles.Length; i++)
             {
-                var matchingReference = targetReferences.FirstOrDefault(reference =>
-                    Vector3.Distance(bubble.Position, reference.position) <= positionTolerance &&
-                    Quaternion.Angle(bubble.Rotation, reference.rotation) <= rotationTolerance &&
-                    Mathf.Abs(bubble.Scale.magnitude - reference.localScale.magnitude) <= sizeTolerance
-                );
-
-                if (matchingReference != null)
-                    matchedBubbles++;
+                bubbles[i] = bubbleContainer.GetChild(i);
             }
-
-            return (float)matchedBubbles / targetReferences.Count;
-        }
-
-        public void SetPuzzle(Puzzle puzzle)
-        {
-            _puzzle = puzzle;
+            return bubbles;
         }
     }
 }

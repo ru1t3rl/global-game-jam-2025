@@ -1,9 +1,7 @@
 {
-    "name": "BubblePuzzle.Puzzles",
-    "rootNamespace": "BubblePuzzle",
-    "references": [
-        "GUID:d5d1ff6abeddb9e48bb6e76168a3d4a8"
-    ],
+    "name": "Puzzle.Models",
+    "rootNamespace": "BubblePuzzle.Puzzles.Models",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
