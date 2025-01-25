@@ -18,21 +18,23 @@ namespace BubblePuzzle.Bubbles.MicrophoneUtilities
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(wandGameObject.tag))
+            if (!other.gameObject.CompareTag(wandGameObject.tag))
             {
                 return;
             } 
             
+            Debug.Log("Start Captuing");
             MicrophoneInput.Instance.StartCapturing();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag(wandGameObject.tag))
+            if (!other.gameObject.CompareTag(wandGameObject.tag))
             {
                 return;
             }
             
+            Debug.Log("Stop Capturing");
             MicrophoneInput.Instance.StopCapturing();
         }
     }

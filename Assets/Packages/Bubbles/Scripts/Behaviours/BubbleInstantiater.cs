@@ -13,7 +13,7 @@ namespace BubblePuzzle.Behaviours
 
         [SerializeField]
         private Transform bubbleContainer;
-
+        
         public int BubbleCount { get; private set; }= 0;
 
         [ContextMenu("Spawn Bubble")]

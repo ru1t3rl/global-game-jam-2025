@@ -570,6 +570,64 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &946459666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946459668}
+  - component: {fileID: 946459667}
+  m_Layer: 0
+  m_Name: MicrophoneINput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &946459667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946459666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43bc079a188d94e409729bb96a74da46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRecordingLength: 1
+  numberOfSamples: 64
+  volumeMultiplier: 15
+  volumeThreshold: 1
+  selectedAudioDevice: 4
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecordingStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onRecordingStopped:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &946459668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946459666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013309137
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +733,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
   m_PrefabInstance: {fileID: 1265393084971985993}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356195970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 438251271001550472, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+  m_PrefabInstance: {fileID: 1265393084971985993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356195969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48117cc023749ff90d7d4f995e0ab1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1356195975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356195969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ed327ab284bb946af901371bc97ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubbleTag: Bubble
+  newBubbleThreshold: 1
+  _bubbleInstantiater: {fileID: 1356195970}
+  bubbleReleaseActionReference:
+  - {fileID: -893802901392052307, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -132061338259400582, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &1733376443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -876,7 +963,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1356195975}
   m_SourcePrefab: {fileID: 100100000, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
 --- !u!1001 &2989418250517094621
 PrefabInstance:
@@ -925,10 +1015,6 @@ PrefabInstance:
     - target: {fileID: 1973041117386067720, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2346691251125337528, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
-      propertyPath: m_Radius
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5365884856187245660, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
       propertyPath: m_Name
@@ -1017,3 +1103,4 @@ SceneRoots:
   - {fileID: 1265393084971985993}
   - {fileID: 5427790621939288343}
   - {fileID: 1733376443}
+  - {fileID: 946459668}
