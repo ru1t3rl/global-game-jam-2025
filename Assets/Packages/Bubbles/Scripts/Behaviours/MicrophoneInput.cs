@@ -19,6 +19,9 @@ namespace BubblePuzzle.Behaviours
         [SerializeField, Tooltip("The threshold won't be multiplied!")]
         private float volumeThreshold = 1;
 
+        [SerializeField]
+        private int selectedAudioDevice = 0;
+
         private string _deviceName;
         private AudioClip _audioClip;
 
@@ -44,7 +47,7 @@ namespace BubblePuzzle.Behaviours
                 return;
             }
 
-            _deviceName = deviceNames[0];
+            _deviceName = deviceNames[selectedAudioDevice];
             Debug.Log($"Using audio device: {_deviceName}");
             Microphone.GetDeviceCaps(_deviceName, out _minFrequency, out _maxFrequency);
             _activeFrequency = Mathf.RoundToInt(_minFrequency + (_maxFrequency - _minFrequency) / 2f);
@@ -82,6 +85,7 @@ namespace BubblePuzzle.Behaviours
             }
 
             float volume = GetMicrophoneVolume(_deviceName) * volumeMultiplier;
+            Debug.Log($"{nameof(MicrophoneInput)} Volume: {volume}");
 
             if (volume >= volumeThreshold)
             {
