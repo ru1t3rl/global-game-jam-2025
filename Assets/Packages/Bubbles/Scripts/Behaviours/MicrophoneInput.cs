@@ -1,9 +1,6 @@
 using BubblePuzzle.Utilities;
-using Meta.WitAi.Lib;
-using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace BubblePuzzle.Behaviours
 {
