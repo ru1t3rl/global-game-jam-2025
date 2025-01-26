@@ -173,6 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90fa010f837437998209af25873e445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzle: {fileID: 11400000, guid: fc72039f916a101468aaac23a8933049, type: 2}
+  puzzle: {fileID: 11400000, guid: 4ac63bd3490e53849b589246a156575b, type: 2}
   fromChildren: 1
-  maxBubbles: 99
+  maxBubbles: 15
