@@ -1327,6 +1327,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7378113452676512109, guid: 850be308e3abe4b4096518bf09d0f5bf, type: 3}
+      propertyPath: onValidationSucceeded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1833819259}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1432,6 +1436,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6752251357694600800, guid: 2a7c5ae1b16f90049bb3369f2807d85c, type: 3}
   m_PrefabInstance: {fileID: 1830181951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1833819258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833819260}
+  - component: {fileID: 1833819259}
+  m_Layer: 0
+  m_Name: PuzzleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1833819259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833819258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc24edbe8f42fdc4892caf9f8f7ac475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzles:
+  - {fileID: 11400000, guid: 579075bd448f4f34f946b45837613b1e, type: 2}
+  - {fileID: 11400000, guid: 8697de30b6770d947b045d5773b21383, type: 2}
+  - {fileID: 11400000, guid: 0ae951fcb47f1054dab540d55330f65d, type: 2}
+  - {fileID: 11400000, guid: 4ac63bd3490e53849b589246a156575b, type: 2}
+  - {fileID: 11400000, guid: 79cda3983e2a24849be8bdb81c187883, type: 2}
+--- !u!4 &1833819260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833819258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936216850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,3 +1887,4 @@ SceneRoots:
   - {fileID: 1526198427}
   - {fileID: 7349003517810527510}
   - {fileID: 1936216852}
+  - {fileID: 1833819260}

@@ -17,12 +17,13 @@ namespace BubblePuzzle.Puzzles.Validation
         public UnityEvent<ValidationResult> OnValidationFinished;
         
         private MeshComparer _meshComparer;
+        
+        public UnityEvent onValidationSucceeded;
 
         private void Awake()
         {
             _meshComparer = GetComponent<MeshComparer>();
         }
-        
         
         public void ValidationForButton(){
             Validate();            
@@ -50,9 +51,16 @@ namespace BubblePuzzle.Puzzles.Validation
             }
 
             float matchPercentage = _meshComparer.ValidateShape();
+
+            bool isValid = matchPercentage > 0.8f;
+            if (isValid)
+            {
+                onValidationSucceeded?.Invoke();
+            }
+            
             return new ValidationResult
             {
-                IsValid = matchPercentage > 0.8f,
+                IsValid = isValid,
                 MatchPercentage = matchPercentage,
                 TotalBubbles = bubbles.Length
             };

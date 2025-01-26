@@ -7,8 +7,6 @@ namespace BubblePuzzle.Behaviours
 {
     public class BubbleInstantiater : MonoBehaviour
     {
-
-
         [SerializeField]
         private Transform spawnPoint;
 

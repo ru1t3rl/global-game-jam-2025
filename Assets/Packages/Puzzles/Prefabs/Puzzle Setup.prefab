@@ -45,11 +45,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408a8c1b69ab54d46a671cb4df4fe8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzle: {fileID: 11400000, guid: fc72039f916a101468aaac23a8933049, type: 2}
   bubbleContainer: {fileID: 398843398197249121}
   OnValidationFinished:
     m_PersistentCalls:
       m_Calls: []
+  onValidationSucceeded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BubblePuzzle.Puzzles.PuzzleManager, BubblePuzzle.Puzzles
+        m_MethodName: SetNextRandomPuzzle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7892699855100841795}
+        m_TargetAssemblyTypeName: ClearChildren, Assembly-CSharp
+        m_MethodName: DestroyChildren
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4095760407285680197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d1f536cce34b33a2115e3f0f70382f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzle: {fileID: 11400000, guid: fc72039f916a101468aaac23a8933049, type: 2}
   bubbleContainer: {fileID: 398843398197249121}
 --- !u!1 &2269627089534770451
 GameObject:
@@ -107,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398843398197249121}
+  - component: {fileID: 7892699855100841795}
   m_Layer: 0
   m_Name: Bubble Container
   m_TagString: Untagged
@@ -129,6 +155,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5532524445973428949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7892699855100841795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731217553855391013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd1205aad31be44fae821f67bd72ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3232784075755212080
 GameObject:
   m_ObjectHideFlags: 0
