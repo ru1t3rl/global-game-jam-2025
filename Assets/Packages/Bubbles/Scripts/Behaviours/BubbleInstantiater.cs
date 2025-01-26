@@ -1,5 +1,6 @@
 ﻿using BubblePuzzle.Puzzles.Configuration;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BubblePuzzle.Behaviours
 {
@@ -14,13 +15,16 @@ namespace BubblePuzzle.Behaviours
         [SerializeField]
         private Transform bubbleContainer;
         
+        public UnityEvent<Transform> onBubbleInstantiated;
+        
         public int BubbleCount { get; private set; }= 0;
 
         [ContextMenu("Spawn Bubble")]
         public void InstantiateBubble()
         {
             BubbleCount++;
-            Instantiate(puzzle.BubblePrefab, spawnPoint.position, Quaternion.identity, bubbleContainer);
+            GameObject bubble = Instantiate(puzzle.BubblePrefab, spawnPoint.position, Quaternion.identity, bubbleContainer);
+            onBubbleInstantiated?.Invoke(bubble.transform);
         }
     }
 }

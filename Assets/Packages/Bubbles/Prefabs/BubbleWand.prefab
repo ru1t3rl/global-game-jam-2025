@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3920987192019140475}
   - component: {fileID: 7745653259911832999}
   - component: {fileID: 438251271001550472}
-  m_Layer: 0
+  - component: {fileID: 8796463757377331536}
+  m_Layer: 8
   m_Name: BubbleWand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +81,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 257
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
-  m_TrackScale: 1
+  m_TrackScale: 0
   m_SmoothScale: 1
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
@@ -225,6 +226,39 @@ MonoBehaviour:
   puzzle: {fileID: 11400000, guid: fc72039f916a101468aaac23a8933049, type: 2}
   spawnPoint: {fileID: 1643288986188792735}
   bubbleContainer: {fileID: 0}
+  onBubbleInstantiated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8796463757377331536}
+        m_TargetAssemblyTypeName: BubblePuzzle.WandBehaviour, BubblePuzzle.Bubbles
+        m_MethodName: AttachBubble
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8796463757377331536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890447529772215007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ed327ab284bb946af901371bc97ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubbleTag: Bubble
+  newBubbleThreshold: 1
+  _bubbleInstantiater: {fileID: 438251271001550472}
+  bubbleReleaseActionReference:
+  - {fileID: -893802901392052307, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -132061338259400582, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &6358586288230283826
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643288986188792735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BubbleOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 6358586288230283826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.098, z: 0}
+  m_LocalPosition: {x: -0.000000011175871, y: -0.08999998, z: -0.000000029802322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -268,7 +302,7 @@ GameObject:
   - component: {fileID: 6789680988003685950}
   - component: {fileID: 5590232499107571800}
   - component: {fileID: 7014358911567636343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,6 +411,14 @@ PrefabInstance:
     - target: {fileID: 3774509235512974894, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_Name
       value: Highlight Interaction Affordance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774509235512974894, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896237787779704601, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5258331117553129771, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_RootOrder

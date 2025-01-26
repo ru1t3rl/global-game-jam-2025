@@ -1,10 +1,8 @@
 {
-    "name": "BubblePuzzle.Bubbles",
-    "rootNamespace": "BubblePuzzle",
+    "name": "BubblePuzzle.Audio",
+    "rootNamespace": "BubblePuzzle.Audio",
     "references": [
-        "GUID:d5d1ff6abeddb9e48bb6e76168a3d4a8",
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:2d1e0534e74dd9144971ee876efff6fb"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

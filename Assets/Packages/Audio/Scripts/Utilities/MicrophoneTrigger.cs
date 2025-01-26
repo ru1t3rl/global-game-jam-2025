@@ -1,5 +1,6 @@
 using BubblePuzzle.Behaviours;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BubblePuzzle.Bubbles.MicrophoneUtilities
 {
@@ -10,6 +11,9 @@ namespace BubblePuzzle.Bubbles.MicrophoneUtilities
         private GameObject wandGameObject;
         
         private SphereCollider _collider;
+
+        public UnityEvent onStartCapturing;
+        public UnityEvent onStopCapturing;
 
         private void Awake()
         {
@@ -25,6 +29,7 @@ namespace BubblePuzzle.Bubbles.MicrophoneUtilities
             
             Debug.Log("Start Captuing");
             MicrophoneInput.Instance.StartCapturing();
+            onStartCapturing.Invoke();
         }
 
         private void OnTriggerExit(Collider other)
@@ -36,6 +41,7 @@ namespace BubblePuzzle.Bubbles.MicrophoneUtilities
             
             Debug.Log("Stop Capturing");
             MicrophoneInput.Instance.StopCapturing();
+            onStopCapturing.Invoke();
         }
     }
 }
