@@ -761,35 +761,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
   m_PrefabInstance: {fileID: 1265393084971985993}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1356195970 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 438251271001550472, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
-  m_PrefabInstance: {fileID: 1265393084971985993}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356195969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48117cc023749ff90d7d4f995e0ab1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1356195975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356195969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89ed327ab284bb946af901371bc97ed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubbleTag: Bubble
-  newBubbleThreshold: 1
-  _bubbleInstantiater: {fileID: 1356195970}
-  bubbleReleaseActionReference:
-  - {fileID: -893802901392052307, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  - {fileID: -132061338259400582, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &1443826401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,6 +988,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5841417650071131394, guid: 850be308e3abe4b4096518bf09d0f5bf, type: 3}
   m_PrefabInstance: {fileID: 1777801291}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1777801293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 398843398197249121, guid: 850be308e3abe4b4096518bf09d0f5bf, type: 3}
+  m_PrefabInstance: {fileID: 1777801291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1830181951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1180,7 +1156,7 @@ PrefabInstance:
     - target: {fileID: 438251271001550472, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: bubbleContainer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1777801293}
     - target: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: m_Name
       value: BubbleWand
@@ -1227,23 +1203,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1634806126551874029, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1457249
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1634806126551874029, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17781967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1634806126551874029, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.30783412
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643288986188792735, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000011175871
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643288986188792735, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643288986188792735, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1356195975}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
 --- !u!1001 &2989418250517094621
 PrefabInstance:
@@ -1319,6 +1304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 657946521456056352, guid: 9bd7b9ce7e52c664793472b6c1b9b209, type: 3}
+      propertyPath: m_TrackScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 869306604970804195, guid: 9bd7b9ce7e52c664793472b6c1b9b209, type: 3}
       propertyPath: m_UseGravity
       value: 1

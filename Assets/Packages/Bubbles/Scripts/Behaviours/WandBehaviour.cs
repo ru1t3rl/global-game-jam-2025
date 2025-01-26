@@ -52,7 +52,6 @@ namespace BubblePuzzle
 
         private void OnMicrophoneInput(float volume)
         {
-            Debug.Log("Volume: "+volume);
             if (volume < newBubbleThreshold)
             {
                 return;
@@ -67,12 +66,15 @@ namespace BubblePuzzle
             {
                 return;
             }
-            
-            Debug.Log("Bubble Collision");
 
+            AttachBubble(other.transform);
+        }
+
+        public void AttachBubble(Transform bubbleTransform)
+        {
             MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
-            _attachedBubble = other.gameObject;
-            previousBubbleParent = other.gameObject.transform.parent;
+            _attachedBubble = bubbleTransform.gameObject;
+            previousBubbleParent = bubbleTransform.parent;
             _attachedBubble.transform.SetParent(transform);
         }
 
