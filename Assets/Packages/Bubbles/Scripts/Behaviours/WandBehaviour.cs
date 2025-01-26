@@ -26,30 +26,36 @@ namespace BubblePuzzle
 
         [SerializeField]
         private InputActionReference[] bubbleReleaseActionReference;
-        
+
         private void Awake()
         {
             _bubbleInstantiater ??= GetComponent<BubbleInstantiater>();
         }
 
-        public void StartBlowing()
+        private void OnEnable()
         {
-            MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
-
             for (int i = 0; i < bubbleReleaseActionReference.Length; i++)
             {
                 bubbleReleaseActionReference[i].action.performed += ReleaseBubble;
             }
         }
 
-        public void StopBlowing()
+        private void OnDisable()
         {
-            MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
-
             for (int i = 0; i < bubbleReleaseActionReference.Length; i++)
             {
                 bubbleReleaseActionReference[i].action.performed -= ReleaseBubble;
             }
+        }
+
+        public void StartBlowing()
+        {
+            MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
+        }
+
+        public void StopBlowing()
+        {
+            MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
         }
 
         private void OnMicrophoneInput(float volume)
