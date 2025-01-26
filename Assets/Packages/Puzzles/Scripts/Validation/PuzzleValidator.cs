@@ -30,7 +30,10 @@ namespace BubblePuzzle.Puzzles.Validation
             this.puzzle = puzzle;
         }
         
-        [ContextMenu("Validate")]
+        public void ValidationForButton(){
+            Validate();            
+        }
+
         public ValidationResult Validate()
         {
             if (puzzle == null)
