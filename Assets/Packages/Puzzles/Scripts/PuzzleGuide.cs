@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using BubblePuzzle.Puzzles.Configuration;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace BubblePuzzle.Puzzles.Guide
@@ -26,8 +25,18 @@ namespace BubblePuzzle.Puzzles.Guide
             previewCamera.transform.LookAt(previewBubblesContainer);
         }
 
-        private void SpawnBubblesForPreview()
+        public void ClearPreviewBubbles()
         {
+            for (int i = 0; i < previewBubblesContainer.childCount; i++)
+            {
+                Destroy(previewBubblesContainer.GetChild(i).gameObject);
+            }
+        }
+        
+        public void SpawnBubblesForPreview()
+        {
+            ClearPreviewBubbles();
+            
             previewBubblesContainer.SetParent(null);
             previewBubblesContainer.position = Vector3.zero;
             previewBubblesContainer.rotation = Quaternion.identity;
