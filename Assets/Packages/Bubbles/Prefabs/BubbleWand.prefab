@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7745653259911832999}
   - component: {fileID: 438251271001550472}
   - component: {fileID: 8796463757377331536}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BubbleWand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643288986188792735}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BubbleOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 6789680988003685950}
   - component: {fileID: 5590232499107571800}
   - component: {fileID: 7014358911567636343}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,11 +414,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774509235512974894, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4896237787779704601, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5258331117553129771, guid: 6b12f432fa58c224baf0d659706362be, type: 3}
       propertyPath: m_RootOrder
