@@ -21,19 +21,18 @@ namespace BubblePuzzle
 
         [CanBeNull]
         private GameObject _attachedBubble = null;
-        public GameObject AttachedBubble => _attachedBubble;
         private BubbleBlowBehaviour _attachedBlowBehaviour;
         private Transform _previousBubbleParent;
 
         [SerializeField]
         private InputActionReference[] bubbleReleaseActionReference;
-
+        
         private void Awake()
         {
             _bubbleInstantiater ??= GetComponent<BubbleInstantiater>();
         }
 
-        private void OnEnable()
+        public void StartBlowing()
         {
             MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
 
@@ -43,7 +42,7 @@ namespace BubblePuzzle
             }
         }
 
-        private void OnDisable()
+        public void StopBlowing()
         {
             MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
 

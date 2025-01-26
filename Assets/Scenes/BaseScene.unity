@@ -552,8 +552,8 @@ MonoBehaviour:
   maxRecordingLength: 1
   numberOfSamples: 64
   volumeMultiplier: 15
-  volumeThreshold: 1
   selectedAudioDevice: 4
+  micConfiguration: {fileID: 11400000, guid: e88d327a96a6a214ea77ea9f11d02c35, type: 2}
   onUpdate:
     m_PersistentCalls:
       m_Calls: []
@@ -761,6 +761,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
   m_PrefabInstance: {fileID: 1265393084971985993}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356195970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8796463757377331536, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+  m_PrefabInstance: {fileID: 1265393084971985993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356195969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ed327ab284bb946af901371bc97ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1443826401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1290,6 +1301,62 @@ PrefabInstance:
       propertyPath: wandGameObject
       value: 
       objectReference: {fileID: 1356195969}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1356195970}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1356195970}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopBlowing
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartBlowing
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BubblePuzzle.WandBehaviour, BubblePuzzle.Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BubblePuzzle.WandBehaviour, BubblePuzzle.Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStopCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103249175117675816, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
+      propertyPath: onStartCapturing.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
