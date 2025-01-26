@@ -1,6 +1,7 @@
 using BubblePuzzle.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace BubblePuzzle.Behaviours
 {
@@ -16,13 +17,13 @@ namespace BubblePuzzle.Behaviours
         [SerializeField]
         private float volumeMultiplier = 10.0f;
 
-        [SerializeField, Tooltip("The threshold won't be multiplied!")]
-        private float volumeThreshold = 1;
-
         [SerializeField]
         private int selectedAudioDevice = 0;
 
+        [SerializeField]
+        private MicrophoneConfiguration micConfiguration;
         private string _deviceName;
+
         private AudioClip _audioClip;
 
         private int _minFrequency;
@@ -34,11 +35,12 @@ namespace BubblePuzzle.Behaviours
         public UnityEvent onRecordingStopped = new();
 
         private bool _active = false;
+        public bool IsCapturing => _active;
 
         protected override void Awake()
         {
             base.Awake();
-            
+
             string[] deviceNames = Microphone.devices;
 
             if (deviceNames.Length <= 0)
@@ -47,7 +49,12 @@ namespace BubblePuzzle.Behaviours
                 return;
             }
 
-            _deviceName = deviceNames[selectedAudioDevice];
+            if (micConfiguration.DeviceIndex >= deviceNames.Length)
+            {
+                micConfiguration.DeviceIndex = 0;
+            }
+
+            _deviceName = deviceNames[micConfiguration.DeviceIndex];
             Debug.Log($"Using audio device: {_deviceName}");
             Microphone.GetDeviceCaps(_deviceName, out _minFrequency, out _maxFrequency);
             _activeFrequency = Mathf.RoundToInt(_minFrequency + (_maxFrequency - _minFrequency) / 2f);
@@ -84,12 +91,8 @@ namespace BubblePuzzle.Behaviours
                 return;
             }
 
-            float volume = GetMicrophoneVolume(_deviceName) * volumeMultiplier;
-
-            if (volume >= volumeThreshold)
-            {
-                onUpdate?.Invoke(volume);
-            }
+            float volume = GetMicrophoneVolume(_deviceName) * micConfiguration.InputMultiplier; 
+            onUpdate?.Invoke(volume);
         }
 
         private float GetMicrophoneVolume(string microphoneName)

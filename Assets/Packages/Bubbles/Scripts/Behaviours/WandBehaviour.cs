@@ -21,12 +21,13 @@ namespace BubblePuzzle
 
         [CanBeNull]
         private GameObject _attachedBubble = null;
-        public GameObject AttachedBubble => _attachedBubble;
         private BubbleBlowBehaviour _attachedBlowBehaviour;
         private Transform _previousBubbleParent;
 
         [SerializeField]
         private InputActionReference[] bubbleReleaseActionReference;
+
+        private bool _blowing = false;
 
         private void Awake()
         {
@@ -35,8 +36,6 @@ namespace BubblePuzzle
 
         private void OnEnable()
         {
-            MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
-
             for (int i = 0; i < bubbleReleaseActionReference.Length; i++)
             {
                 bubbleReleaseActionReference[i].action.performed += ReleaseBubble;
@@ -45,12 +44,22 @@ namespace BubblePuzzle
 
         private void OnDisable()
         {
-            MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
-
             for (int i = 0; i < bubbleReleaseActionReference.Length; i++)
             {
                 bubbleReleaseActionReference[i].action.performed -= ReleaseBubble;
             }
+        }
+
+        public void StartBlowing()
+        {
+            MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
+            _blowing = true;
+        }
+
+        public void StopBlowing()
+        {
+            MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
+            _blowing = false;
         }
 
         private void OnMicrophoneInput(float volume)
@@ -61,7 +70,10 @@ namespace BubblePuzzle
                 return;
             }
 
-            _bubbleInstantiater?.InstantiateBubble();
+            if (_attachedBubble == null)
+            {
+                _bubbleInstantiater?.InstantiateBubble();
+            }
         }
 
         private void OnCollisionEnter(Collision other)
@@ -101,7 +113,10 @@ namespace BubblePuzzle
             _attachedBubble = null;
             _previousBubbleParent = null;
 
-            MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
+            if (_blowing)
+            {
+                MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
+            }
 
             if (_attachedBlowBehaviour)
             {
