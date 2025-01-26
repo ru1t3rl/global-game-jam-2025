@@ -6,6 +6,7 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField, Tooltip("All scenes will be loaded additive")]
     private SceneField[] scenes;
+    [SerializeField]
     private bool loadOnAwake = true;
 
     private void Awake()

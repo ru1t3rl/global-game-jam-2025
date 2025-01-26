@@ -1432,6 +1432,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6752251357694600800, guid: 2a7c5ae1b16f90049bb3369f2807d85c, type: 3}
   m_PrefabInstance: {fileID: 1830181951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1936216850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1936216852}
+  - component: {fileID: 1936216851}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1936216851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936216850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227b559fee90590489a27674aad41c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenes:
+  - sceneAsset: {fileID: 102900000, guid: 3a0a0c275d5e1244da628ecf63704a62, type: 3}
+    sceneName: Environment
+  - sceneAsset: {fileID: 102900000, guid: 96ba3344d6a17e8478e572a9a37fa9be, type: 3}
+    sceneName: MainMenu
+  loadOnAwake: 1
+--- !u!4 &1936216852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936216850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1984423392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1522,6 +1572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleWand
       objectReference: {fileID: 0}
+    - target: {fileID: 890447529772215007, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1365343384640865632, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2745163
@@ -1565,6 +1619,22 @@ PrefabInstance:
     - target: {fileID: 3920987192019140475, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
       value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472969233863354154, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296237167246810653, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358586288230283826, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008123037182517873, guid: b489943301f382b4ca0a8ac9ff4b9f98, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1621,7 +1691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2346691251125337528, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
       propertyPath: m_Radius
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5365884856187245660, guid: d1d3f3c8f642b824fa385dee7ae40af4, type: 3}
       propertyPath: m_Name
@@ -1665,6 +1735,10 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1614625766}
+    - target: {fileID: 3966307886805320364, guid: a16627012b27f824c84de38b9af3adf6, type: 3}
+      propertyPath: m_Text
+      value: Press to validate
+      objectReference: {fileID: 0}
     - target: {fileID: 4623577019557414708, guid: a16627012b27f824c84de38b9af3adf6, type: 3}
       propertyPath: m_Name
       value: BubbleValidatorButton
@@ -1786,3 +1860,4 @@ SceneRoots:
   - {fileID: 218706065}
   - {fileID: 1526198427}
   - {fileID: 7349003517810527510}
+  - {fileID: 1936216852}
