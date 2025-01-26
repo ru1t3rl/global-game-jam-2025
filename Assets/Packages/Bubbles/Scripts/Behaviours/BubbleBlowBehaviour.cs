@@ -1,4 +1,5 @@
-﻿using BubblePuzzle.Enums;
+﻿using System;
+using BubblePuzzle.Enums;
 using UnityEngine;
 using Transform = log4net.Util.Transform;
 
@@ -30,8 +31,16 @@ namespace BubblePuzzle.Behaviours
             }
 
             _originalScale = bubbleObject.transform.localScale;
+        }
 
+        private void OnEnable()
+        {
             MicrophoneInput.Instance.onUpdate?.AddListener(Grow);
+        }
+
+        private void OnDisable()
+        {
+            MicrophoneInput.Instance.onUpdate?.RemoveListener(Grow);
         }
 
         public void Attach()

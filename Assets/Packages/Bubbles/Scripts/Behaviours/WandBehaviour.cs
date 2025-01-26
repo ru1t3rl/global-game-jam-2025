@@ -57,6 +57,7 @@ namespace BubblePuzzle
         {
             if (volume < newBubbleThreshold)
             {
+                Debug.LogWarning($"To Quiet: {volume}");
                 return;
             }
 
