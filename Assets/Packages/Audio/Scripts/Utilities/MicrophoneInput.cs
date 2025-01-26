@@ -23,6 +23,7 @@ namespace BubblePuzzle.Behaviours
         [SerializeField]
         private MicrophoneConfiguration micConfiguration;
         private string _deviceName;
+        private int micId;
 
         private AudioClip _audioClip;
 
@@ -55,6 +56,8 @@ namespace BubblePuzzle.Behaviours
             }
 
             _deviceName = deviceNames[micConfiguration.DeviceIndex];
+            micId = micConfiguration.DeviceIndex;
+
             Debug.Log($"Using audio device: {_deviceName}");
             Microphone.GetDeviceCaps(_deviceName, out _minFrequency, out _maxFrequency);
             _activeFrequency = Mathf.RoundToInt(_minFrequency + (_maxFrequency - _minFrequency) / 2f);
@@ -91,7 +94,16 @@ namespace BubblePuzzle.Behaviours
                 return;
             }
 
-            float volume = GetMicrophoneVolume(_deviceName) * micConfiguration.InputMultiplier; 
+            if (micId != micConfiguration.DeviceIndex)
+            {
+                StopCapturing();
+                _deviceName = Microphone.devices[micConfiguration.DeviceIndex];
+                StartCapturing();
+                micId = micConfiguration.DeviceIndex;
+                return;
+            }
+
+            float volume = GetMicrophoneVolume(_deviceName) * micConfiguration.InputMultiplier;
             onUpdate?.Invoke(volume);
         }
 

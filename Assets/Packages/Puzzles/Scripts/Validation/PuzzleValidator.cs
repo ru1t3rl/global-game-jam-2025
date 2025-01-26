@@ -10,24 +10,19 @@ namespace BubblePuzzle.Puzzles.Validation
     [RequireComponent(typeof(MeshComparer))]
     public class PuzzleValidator : MonoBehaviour
     {
-        [SerializeField]
-        private Puzzle puzzle;
-
+        
         [SerializeField]
         private Transform bubbleContainer;
 
         public UnityEvent<ValidationResult> OnValidationFinished;
         
         private MeshComparer _meshComparer;
+        
+        public UnityEvent onValidationSucceeded;
 
         private void Awake()
         {
             _meshComparer = GetComponent<MeshComparer>();
-        }
-        
-        public void SetPuzzle(Puzzle puzzle)
-        {
-            this.puzzle = puzzle;
         }
         
         public void ValidationForButton(){
@@ -36,7 +31,7 @@ namespace BubblePuzzle.Puzzles.Validation
 
         public ValidationResult Validate()
         {
-            if (puzzle == null)
+            if (PuzzleManager.Instance.activePuzzle == null)
             {
                 Debug.LogError("No puzzle is set!");
                 return new ValidationResult
@@ -56,9 +51,16 @@ namespace BubblePuzzle.Puzzles.Validation
             }
 
             float matchPercentage = _meshComparer.ValidateShape();
+
+            bool isValid = matchPercentage > 0.8f;
+            if (isValid)
+            {
+                onValidationSucceeded?.Invoke();
+            }
+            
             return new ValidationResult
             {
-                IsValid = matchPercentage > 0.8f,
+                IsValid = isValid,
                 MatchPercentage = matchPercentage,
                 TotalBubbles = bubbles.Length
             };

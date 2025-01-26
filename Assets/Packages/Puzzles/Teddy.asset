@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Teddy
   m_EditorClassIdentifier: 
   maxBubbles: 99
-  bubblePrefab: {fileID: 0}
+  bubblePrefab: {fileID: 6147136293060056537, guid: 2a7c5ae1b16f90049bb3369f2807d85c, type: 3}
   bubbleShape: []

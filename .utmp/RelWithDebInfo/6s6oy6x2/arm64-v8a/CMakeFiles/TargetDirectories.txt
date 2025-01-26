@@ -1,0 +1,5 @@
+E:/lucar/Git/GameDev/Bubble Architect/.utmp/RelWithDebInfo/6s6oy6x2/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/lucar/Git/GameDev/Bubble Architect/.utmp/RelWithDebInfo/6s6oy6x2/arm64-v8a/CMakeFiles/rebuild_cache.dir
+E:/lucar/Git/GameDev/Bubble Architect/.utmp/RelWithDebInfo/6s6oy6x2/arm64-v8a/GameActivity/CMakeFiles/game.dir
+E:/lucar/Git/GameDev/Bubble Architect/.utmp/RelWithDebInfo/6s6oy6x2/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+E:/lucar/Git/GameDev/Bubble Architect/.utmp/RelWithDebInfo/6s6oy6x2/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
