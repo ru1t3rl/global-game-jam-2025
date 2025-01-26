@@ -85,7 +85,6 @@ namespace BubblePuzzle.Behaviours
             }
 
             float volume = GetMicrophoneVolume(_deviceName) * volumeMultiplier;
-            Debug.Log($"{nameof(MicrophoneInput)} Volume: {volume}");
 
             if (volume >= volumeThreshold)
             {
