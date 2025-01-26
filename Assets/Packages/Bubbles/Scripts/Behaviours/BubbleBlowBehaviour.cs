@@ -20,6 +20,8 @@ namespace BubblePuzzle.Behaviours
 
         private Vector3 _originalScale;
 
+        private bool _attached = false;
+
         private void Awake()
         {
             if (bubbleObject == null)
@@ -32,8 +34,23 @@ namespace BubblePuzzle.Behaviours
             MicrophoneInput.Instance.onUpdate?.AddListener(Grow);
         }
 
+        public void Attach()
+        {
+            _attached = true;
+        }
+
+        public void Detach()
+        {
+            _attached = false;
+        }
+
         public void Grow(float amount)
         {
+            if (!_attached)
+            {
+                return;
+            }
+
             _totalVolume += amount;
             _size = method switch
             {

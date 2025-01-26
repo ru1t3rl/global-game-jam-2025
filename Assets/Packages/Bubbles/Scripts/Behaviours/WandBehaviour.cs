@@ -22,7 +22,8 @@ namespace BubblePuzzle
         [CanBeNull]
         private GameObject _attachedBubble = null;
         public GameObject AttachedBubble => _attachedBubble;
-        private Transform previousBubbleParent = null;
+        private BubbleBlowBehaviour _attachedBlowBehaviour;
+        private Transform _previousBubbleParent;
 
         [SerializeField]
         private InputActionReference[] bubbleReleaseActionReference;
@@ -35,8 +36,9 @@ namespace BubblePuzzle
         private void OnEnable()
         {
             MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
-            
-            for(int i = 0; i < bubbleReleaseActionReference.Length; i++) { 
+
+            for (int i = 0; i < bubbleReleaseActionReference.Length; i++)
+            {
                 bubbleReleaseActionReference[i].action.performed += ReleaseBubble;
             }
         }
@@ -44,8 +46,9 @@ namespace BubblePuzzle
         private void OnDisable()
         {
             MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
-            
-            for(int i = 0; i < bubbleReleaseActionReference.Length; i++) {
+
+            for (int i = 0; i < bubbleReleaseActionReference.Length; i++)
+            {
                 bubbleReleaseActionReference[i].action.performed -= ReleaseBubble;
             }
         }
@@ -74,18 +77,36 @@ namespace BubblePuzzle
         {
             MicrophoneInput.Instance.onUpdate?.RemoveListener(OnMicrophoneInput);
             _attachedBubble = bubbleTransform.gameObject;
-            previousBubbleParent = bubbleTransform.parent;
+            _previousBubbleParent = bubbleTransform.parent;
             _attachedBubble.transform.SetParent(transform);
+
+
+            _attachedBlowBehaviour = bubbleTransform.GetComponent<BubbleBlowBehaviour>();
+            if (_attachedBlowBehaviour == null)
+            {
+                Debug.LogWarning(
+                    $"The object attached to the wand doesn't have a BlowBehaviour so won't be able to grow. ({nameof(bubbleTransform)})");
+
+                return;
+            }
+
+            _attachedBlowBehaviour.Attach();
         }
 
         [ContextMenu("Release Bubble")]
         public void ReleaseBubble(InputAction.CallbackContext context = default)
         {
-            _attachedBubble?.transform.SetParent(previousBubbleParent);
+            _attachedBubble?.transform.SetParent(_previousBubbleParent);
             _attachedBubble = null;
-            previousBubbleParent = null;
-            
+            _previousBubbleParent = null;
+
             MicrophoneInput.Instance.onUpdate?.AddListener(OnMicrophoneInput);
+
+            if (_attachedBlowBehaviour)
+            {
+                _attachedBlowBehaviour.Detach();
+                _attachedBlowBehaviour = null;
+            }
         }
     }
 }
