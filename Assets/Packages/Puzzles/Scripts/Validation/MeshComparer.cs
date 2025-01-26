@@ -5,7 +5,6 @@ namespace BubblePuzzle.Puzzles.Validation
 {
     public class MeshComparer : MonoBehaviour
     {
-        public Puzzle puzzle;
         private Transform puzzelTargetShape;
 
         [SerializeField]
@@ -25,13 +24,13 @@ namespace BubblePuzzle.Puzzles.Validation
         private void SpawnTargetShape()
         {
             puzzelTargetShape = new GameObject().transform;
-            for (int i = 0; i < puzzle.BubbleShape.Length; i++)
+            for (int i = 0; i < PuzzleManager.Instance.activePuzzle.BubbleShape.Length; i++)
             {
-                var shape = Instantiate(puzzle.BubblePrefab, Vector3.zero, Quaternion.identity, puzzelTargetShape).transform;
+                var shape = Instantiate(PuzzleManager.Instance.activePuzzle.BubblePrefab, Vector3.zero, Quaternion.identity, puzzelTargetShape).transform;
                 shape.SetParent(puzzelTargetShape);
-                shape.localPosition = puzzle.BubbleShape[i].Position;
-                shape.localRotation = puzzle.BubbleShape[i].Rotation;
-                shape.localScale = puzzle.BubbleShape[i].Scale;
+                shape.localPosition = PuzzleManager.Instance.activePuzzle.BubbleShape[i].Position;
+                shape.localRotation = PuzzleManager.Instance.activePuzzle.BubbleShape[i].Rotation;
+                shape.localScale = PuzzleManager.Instance.activePuzzle.BubbleShape[i].Scale;
             }
         }
 

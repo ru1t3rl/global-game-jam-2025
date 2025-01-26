@@ -10,9 +10,6 @@ namespace BubblePuzzle.Puzzles.Guide
     {
         [SerializeField]
         private GameObject previewBubblePrefab;
-        
-        [SerializeField]
-        private Puzzle puzzle;
 
         [SerializeField]
         private LayerMask previewLayerMask;
@@ -37,12 +34,12 @@ namespace BubblePuzzle.Puzzles.Guide
             previewBubblesContainer.localScale = Vector3.one;
 
             List<Transform> bubbles = new ();
-            for (int i = 0; i < puzzle.BubbleShape.Length; i++)
+            for (int i = 0; i < PuzzleManager.Instance.activePuzzle.BubbleShape.Length; i++)
             {
                 var gobj = Instantiate(previewBubblePrefab, Vector3.zero, Quaternion.identity, previewBubblesContainer );
-                gobj.transform.localPosition = puzzle.BubbleShape[i].Position;
-                gobj.transform.localRotation = puzzle.BubbleShape[i].Rotation;
-                gobj.transform.localScale = puzzle.BubbleShape[i].Scale;
+                gobj.transform.localPosition = PuzzleManager.Instance.activePuzzle.BubbleShape[i].Position;
+                gobj.transform.localRotation = PuzzleManager.Instance.activePuzzle.BubbleShape[i].Rotation;
+                gobj.transform.localScale = PuzzleManager.Instance.activePuzzle.BubbleShape[i].Scale;
                 
                 gobj.layer = (int) Mathf.Log(previewLayerMask.value, 2);
                 bubbles.Add(gobj.transform);

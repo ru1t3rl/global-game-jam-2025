@@ -10,9 +10,7 @@ namespace BubblePuzzle.Puzzles.Validation
     [RequireComponent(typeof(MeshComparer))]
     public class PuzzleValidator : MonoBehaviour
     {
-        [SerializeField]
-        private Puzzle puzzle;
-
+        
         [SerializeField]
         private Transform bubbleContainer;
 
@@ -25,10 +23,6 @@ namespace BubblePuzzle.Puzzles.Validation
             _meshComparer = GetComponent<MeshComparer>();
         }
         
-        public void SetPuzzle(Puzzle puzzle)
-        {
-            this.puzzle = puzzle;
-        }
         
         public void ValidationForButton(){
             Validate();            
@@ -36,7 +30,7 @@ namespace BubblePuzzle.Puzzles.Validation
 
         public ValidationResult Validate()
         {
-            if (puzzle == null)
+            if (PuzzleManager.Instance.activePuzzle == null)
             {
                 Debug.LogError("No puzzle is set!");
                 return new ValidationResult

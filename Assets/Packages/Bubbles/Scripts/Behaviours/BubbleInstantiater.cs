@@ -1,4 +1,5 @@
-﻿using BubblePuzzle.Puzzles.Configuration;
+﻿using BubblePuzzle.Puzzles;
+using BubblePuzzle.Puzzles.Configuration;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,8 +7,7 @@ namespace BubblePuzzle.Behaviours
 {
     public class BubbleInstantiater : MonoBehaviour
     {
-        [SerializeField]
-        private Puzzle puzzle;
+
 
         [SerializeField]
         private Transform spawnPoint;
@@ -23,7 +23,7 @@ namespace BubblePuzzle.Behaviours
         public void InstantiateBubble()
         {
             BubbleCount++;
-            GameObject bubble = Instantiate(puzzle.BubblePrefab, spawnPoint.position, Quaternion.identity, bubbleContainer);
+            GameObject bubble = Instantiate(PuzzleManager.Instance.activePuzzle.BubblePrefab, spawnPoint.position, Quaternion.identity, bubbleContainer);
             onBubbleInstantiated?.Invoke(bubble.transform);
         }
     }
